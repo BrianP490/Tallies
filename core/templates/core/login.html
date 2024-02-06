@@ -1,0 +1,50 @@
+<!-- LOGIN PAGE -->
+
+<!-- Relies on base.html foundations and substitutes the content -->
+
+{% extends 'core/base.html' %} <!--import the base.html code-->
+{% block title %}Log in{% endblock %}<!--Change the title of the page-->
+
+{% block content %} <!--PLACEHOLDER SUBSTITUTION FOR 'content' BLOCK-->
+<div class=" my-6 mx-auto bg-gray-100 rounded-xl">
+    <h1 class="mb-6 text-3xl">Log in</h1>
+
+    <form method="post" action=".">
+        {% csrf_token %}    <!-- This is a Django template tag that outputs a hidden input field containing a Cross-Site Request Forgery (CSRF) token. CSRF tokens are used to protect against CSRF attacks by ensuring that the form is submitted by the same site that rendered it.-->
+
+        <div class="mb-3">
+            <label for="" class="inline-block mb-2">Username</label>
+            {{form.username}} <!-- Display username field entry-->
+        </div>
+        <div class="mb-3">
+            <label for="" class="inline-block mb-2">Password</label>
+            {{form.password}} <!-- Display password field entry-->
+        </div>
+
+        {% if form.errors or form.non_field_errors %} <!--Check for errors-->
+            <div class="mb-3 p-6 bg-red-100 rounded-xl">
+                {% for field in form %}
+                    {{ field.errors }} <!--Display any field errors-->
+                {% endfor %}
+
+                {{form.non_field_errors}} <!--Display any other errors-->
+            </div>
+        {% endif %}
+        <button class="py-4 px-8 text-lg bg-teal-500 hover:bg-teal-700 rounded-xl text-white">Submit</button>
+        
+    </form>
+</div>
+
+<!--SignUp Button-->
+<div class=" mx-auto my-2 p-2 bg-gray-600 rounded-xl">
+    <div class="my-auto flex rounded-xl">
+        <h1 class="my-3 text-3xl text-white">Don't have an account?
+
+        
+        
+        <a href="{% url 'core:SignUp' %}" class="py-1 px-2 my-2 text-lg bg-teal-500 hover:bg-teal-700 rounded-xl text-white">
+            <button>SignUp</button>
+        </a><!-- Using the core.urls.py and within the urlpatterns list, make a call to the URL pattern named 'SignUp'. The specified views function will then be forced to run -->
+    </div>
+</div>
+{% endblock %}

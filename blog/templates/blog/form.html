@@ -1,0 +1,33 @@
+<!-- NEW BLOG ENTRY FORM PAGE HTML -->
+
+<!-- Relies on core/base.html foundations and substitutes the content -->
+
+{% extends 'core/base.html' %} <!--import the base.html code-->
+
+{%block title %}{{ title }} {% endblock %} <!--Change the title of the page-->
+
+
+{% block content %} <!--PLACEHOLDER SUBSTITUTION FOR 'content' BLOCK-->
+
+    <h1 class="mb-6 text-3xl">{{title}}</h1>
+    <form method="post" action="." enctype="multipart/form-data">
+        {% csrf_token %} <!--CROSS SITE REQUEST FORM TOKEN-->
+        <div class="space-y-4">
+            {{ form.as_p}} <!-- This is a Django template variable. It outputs the form's fields as paragraphs (<p> elements). Form sent via urlpattern call. The as_p method is a shortcut for rendering each form field wrapped in a paragraph tag.-->
+        </div>
+
+        {% if form.errors or form.non_field_errors %} <!-- Check for any errors-->
+            <div class="mb-3 p-6 bg-red-100 rounded-xl">
+                {% for field in form %} <!--Loop through all detected errors in the form entry fields-->
+                    {{ field.errors }} <!--load in the error message to the screen-->
+                {% endfor %}
+
+                {{form.non_field_errors}}<!-- load in any non-field errors-->
+            </div>
+        {% endif %}
+        
+        <button class="mt-6 py-4 px-8 text-lg bg-teal-500 hover:bg-teal-700 rounded-xl text-white">Submit</button> <!--Submit button that triggers form submittion action-->
+
+    </form>
+
+{% endblock %}

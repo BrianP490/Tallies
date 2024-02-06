@@ -1,0 +1,18 @@
+<!-- Show the About html page -->
+
+<!-- Relies on base.html foundations and substitutes the block content -->
+
+{% extends 'core/base.html' %} <!--import the base.html code-->
+
+{% block title %}About{% endblock %} <!--Change the title of the page-->
+
+{% block content %} <!--PLACEHOLDER SUBSTITUTION FOR 'content' BLOCK-->
+    <h2 class="text-2xl text-center">Mission Statement: </h2>
+    <div class="w-3/4 my-6 mx-auto p-6 bg-gray-100 rounded-xl">
+
+        <p>Creating a safe space for free speech and communication in order to spread creativity and ideas into the world by encouraging building relationships that stimmulate critical thinking. </p>
+
+        <h3 class="text-lg text-center font-semibold mt-6 mb-2 ">XVX[  BRIAN PEREZ  ]XVX</h3>
+        <p class="mt-6 text-center">XVIIX[  CREATOR OF TALLIES  ]XIIVX</p>
+    </div>
+{% endblock %}

@@ -1,0 +1,68 @@
+<!-- TIC TAC TOE HTML GAME PAGE-->
+{% extends 'core/base.html' %} <!--import the base.html code-->
+{% load static %} 
+<!-- Always needs to be included when using static references to static files. This tag allows you to use the static template tag to reference static files.-->
+<!--When Django serves static files during development, it uses the STATIC_URL to determine the base URL, and it searches for static files within each app's static directory as well as any additional directories specified in STATICFILES_DIRS-->
+
+{% block Head %}<!--PLACEHOLDER SUBSTITUTION FOR 'Head' BLOCK-->
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+        <link rel="stylesheet" type="text/css" href="{% static 'css/TTTstyle.css' %}"><!--Links the cascading style sheet from the static directory URL to your CSS file, considering the STATIC_URL setting in your Django project's settings file.to-->
+
+        <title>Tic-Tac-Toe | Tallies</title>
+    </head>
+{% endblock %}
+
+
+{% block Body %}<!--PLACEHOLDER SUBSTITUTION FOR 'Body' BLOCK-->
+    <body>
+        <div class="container">
+            
+            <div class="Instruct">
+                <p class="text">Welcome</p>
+                <button class="button">Click Me To Start Game</button>
+            </div>
+
+            <div class="board"> <!--Tic Tac Toe Game Board design-->
+                <div class="row-1">
+                    <div id = 0 class="box">
+                        <p class="character-1"></p>
+                    </div>
+                    <div id = 1 class="box">
+                        <p class="character-2"></p>
+                    </div>
+                    <div id = 2 class="box">
+                        <p class="character-3"></p>
+                    </div>
+                </div>
+                <div class="row-2">
+                    <div id = 3 class="box">
+                        <p class="character-1"></p>
+                    </div>
+                    <div id = 4 class="box">
+                        <p class="character-2"></p>
+                    </div>
+                    <div id = 5 class="box">
+                        <p class="character-3"></p>
+                    </div>
+                </div>
+                <div class="row-3">
+                    <div id = 6 class="box">
+                        <p class="character-1"></p>
+                    </div>
+                    <div id = 7 class="box">
+                        <p class="character-2"></p>
+                    </div>
+                    <div id = 8 class="box">
+                        <p class="character-3"></p>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+        <script src="{% static 'javascript/TTT.js' %}"></script> <!--Include the index.js script into the html file  -->
+    </body>
+{% endblock %}

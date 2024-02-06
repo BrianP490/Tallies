@@ -1,0 +1,154 @@
+<!-- TALLIE BLOG DETAIL HTML PAGE -->
+
+<!-- Relies on base.html foundations and substitutes the block content -->
+
+{% extends 'core/base.html' %} <!--import the base.html code-->
+
+{% block title %}{{ blog.name }}{% endblock %} <!--Change the title of the page-->
+
+{% block Extra_Styling %} <!--PLACEHOLDER SUBSTITUTION FOR 'Styling' BLOCK-->
+
+    <!-- add extra styling to specific html page elements -->
+    <style>
+        /* Add styling to the comment pop-up elements */
+        #commentFormContainer {
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background: #f7fafc;
+            padding: 20px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            z-index: 1000;
+            width: 700px;
+            height: 500px;
+        }
+    </style>
+{% endblock %}
+
+
+{% block Xtra_Button %} <!--PLACEHOLDER SUBSTITUTION FOR 'Xtra_Button' BLOCK-->
+<a href="{% url 'blog:home' %}" class="px-6 py-3 text-lg font-semibold bg-gray-500 text-white rounded-xl hover:bg-gray-700">Home</a>
+{% endblock %}
+
+{% block content %} <!--PLACEHOLDER SUBSTITUTION FOR 'content' BLOCK--> 
+    <div class="grid grid-cols-2 gap-6">
+        <div class="col-span-3">
+            <!--PICTURE PLACEHOLDER (FOR FUTURE IMPLEMENTATION)-->
+        </div>
+        <div class="col-span-2 p-6 bg-gray-100 rounded-xl">
+            <h1 class="mb-6 text-3xl">{{ blog.name }}</h1>
+            
+
+            {% if blog.content %} <!--Check if there is any decription on the blog-->
+                <strong>Created By: {{blog.created_by}}</strong>
+                
+                <p class="text-gray-700">
+                    <strong>Description: </strong>{{blog.content}}
+                </p>
+            {% endif %}
+
+            {% if request.user == blog.created_by %} <!-- Check if the current user is the owner of the blog-->
+                <div class="mt-6 p-6 text-right roundex-xl">
+                    <p>This is your blog!</p>
+                    
+                    <a href="{% url 'blog:edit' blog.id %}" class="inline-block mt-6 px-6 py-3  text-lg font-semibold bg-teal-500 text-white rounded-xl">Edit</a>  <!-- Use the current defined URL. Then, using the blog.urls.py and within the urlpatterns list, make a call to the URL pattern named 'edit'. A view from blog.views.py will then be forced to run with blog.id as an argument--><!--utilizing a template tag in Django web framework-->
+
+                    <!--  The following HTML code is creating a link (<a> tag) with an href attribute pointing to the URL defined by the 'blog:delete' pattern in Django. The specific blog's ID is used as an argument added on to that URL. -->
+                    <a href="{% url 'blog:delete' blog.id %}" class="inline-block mt-6 px-6 py-3  text-lg font-semibold bg-red-500 text-white rounded-xl">Delete</a>
+                    
+                </div>
+            {% else %}    
+                <!-- <a href="#" class="inline-block mt-6 px-6 py-3 text-lg font-semibold bg-teal-500 text-white rounded-xl hover:bg-teal-700">Write Tallie</a> -->
+            {% endif %}    
+
+        </div>
+    </div>
+    <br>
+    <hr>
+
+    <div>
+        <h2>Tallie Marks...</h2>
+
+        {% for comment in blog.Comments.all %} <!--Loop through all the blog's comments-->
+            <div>
+
+                <!-- Use the current defined URL. Then, using the blog.urls.py and within the urlpatterns list, make a call to the URL pattern named 'detail'. A view from blog.views.py will then be forced to run with the current blog id as an argument -->
+                <!-- <a href="{% url 'blog:detail' blog.id %}"> 
+                </a> -->
+                
+                <div>
+                    <!--PICTURE-->
+                </div>
+                <div class="p-6 bg-gray-100 rounded-b-xl">
+                    <h2 class="text-2xl underline">{{comment.created_by}}</h2> <!-- SUBSTITUTE IN THE BLOG NAME  -->
+                    <h3 class="">{{comment.created_at}}</h3>
+                    <div class="pl-4">
+                        <h3 class="text-2xl">{{comment.content}}</h3>
+                    </div>
+                    
+
+                </div>
+                
+            </div>
+            
+            <hr>
+
+        {% endfor %}
+
+
+        <!--Create button that adds a comment to the current Blog-->
+        
+        <button id="commentButton" class="inline-block mt-6 px-6 py-3 text-lg font-semibold bg-teal-500 text-white rounded-xl hover:bg-teal-700">Add a Tallie</button>   
+
+        <div id="commentFormContainer" style="display: none;opacity: 1;">
+            <!--Show form content when clicked using JavaScript. Code is within 'Script_Content' BLOCK-->
+            <form id="commentForm" method="post" action="." enctype="multipart/form-data">
+                {% csrf_token %}
+                <div class="space-y-4">
+                    {{ comment_form.as_p }}<!-- This is a Django template variable. It outputs the form's fields as paragraphs (<p> elements). Form sent via urlpattern call. The as_p method is a shortcut for rendering each form field wrapped in a paragraph tag.-->
+                </div>
+                
+                <button type="submit" class="mt-6 py-4 px-8 text-lg bg-teal-500 hover:bg-teal-700 rounded-xl text-white">Submit Tallie</button> <!--Submit button that triggers form submittion action;  good practice to explicitly specify the type of button, especially in more complex forms or when using JavaScript to handle form submission or other interactions. This helps clarify the intended behavior of the button and ensures consistency across different browsers.--> 
+
+                <button id="CancelCommentButton" type="button" class="mt-6 py-4 px-8 text-lg bg-white hover:bg-gray-300 rounded-xl text-teal-500">Cancel</button> <!--Cancels out of the comment box; set to "button" to prevent it from submitting the form.-->
+            </form>
+        </div> 
+    
+
+    </div>
+    <!-- <div class="mt-6 px-6 py-12 bg-gray-100 rounded-xl">
+        <h2 class="mb-12 text-2xl text-center">Related blogs</h2>
+        <div class="grid grid-cols-3 gap-3">
+            {% for blog in related_blogs %}
+                <div>
+                    <a href="{% url 'blog:detail' blog.id %}">
+                        <div>
+                            <img src="{{ blog.image.url }}" class="rounded-t-xl" >
+                        </div>
+                        <div class="p-6 bg-white rounded-b-xl">
+                            <h2 class="text-2xl">{{blog.name}}</h2>
+                            <p class="text-gray-500">Price: {{blog.price}}</p>
+                        </div>
+                    </a>
+                </div>
+            {% endfor %}
+        </div>
+    </div> -->
+{% endblock %}
+
+{% block Script_Content %} <!--PLACEHOLDER SUBSTITUTION FOR 'Script_Content' BLOCK-->
+
+    <script>
+        // make the comment form appear
+        document.getElementById('commentButton').addEventListener('click', function () {
+            document.getElementById('commentFormContainer').style.display = 'block';
+        });
+        document.getElementById('CancelCommentButton').addEventListener('click', function () {
+            document.getElementById('commentForm').reset(); //resets all form fields to their default values.
+            document.getElementById('commentFormContainer').style.cssText = "display: none; opacity: 1;";//hide the comment form
+            
+        });
+    </script>
+{% endblock %}
+

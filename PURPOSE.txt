@@ -1,0 +1,16 @@
+Django project with S3 Static file server
+
+
+When git clone is done:
+
+SET up .env file with definitions for 
+
+SECRET_KEY='Placeholder'
+
+
+
+AWS_ACCESS_KEY_ID ='Placeholder'
+AWS_SECRET_ACCESS_KEY ='Placeholder'
+
+AWS_STORAGE_BUCKET_NAME ='Placeholder'
+AWS_STORAGE_BUCKET_NAME = 'Placeholder'

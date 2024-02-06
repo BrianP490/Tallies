@@ -1,0 +1,63 @@
+/* Every change needs to be committed to the S3 Bucket.
+
+Delete the S3 object (in this case, the BaseStyle.css file in the S3 bucket) and then
+use command: python manage.py collectstatic
+*/
+
+
+*{ /*apply to all page*/
+    margin: 0;
+}
+
+.container{
+    margin-left: auto;
+    margin-right: auto;
+}
+
+body{ /*apply to body */
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    justify-content: center;
+    background: #1f2937;
+}
+
+#Navigation{
+    width: 100%;
+}
+
+
+/* .Content{
+    width: 100%;
+} */
+/* footer{
+    width: 100%;
+} */
+
+#LOGO {
+    width: 45px; height: 45px; border-radius: 0.5rem; margin-right: 10px;
+}
+
+/* Font size for width between 1px and 600px */
+@media (min-width: 1px) and (max-width: 600px) {
+    #Navigation a,
+    #Navigation p {
+        font-size: 8px;
+    }
+}
+
+/* Font size for width between 601px and 975px */
+@media (min-width: 601px) and (max-width: 975px) {
+    #Navigation a,
+    #Navigation p {
+        font-size: 12px;
+    }
+}
+
+/* Font size for width higher than 976px */
+@media (min-width: 976px) {
+    #Navigation a,
+    #Navigation p {
+        font-size: 16px;
+    }
+}

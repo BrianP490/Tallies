@@ -1,0 +1,49 @@
+
+
+Notes on the use of Tailwind css:
+    Used to provide sytles to classes and HTML elements
+    Tailwind CSS for its pragmatic approach to styling, which prioritizes efficiency, flexibility, and maintainability in web development projects.
+    Tailwind CSS follows a utility-first approach, providing a set of low-level utility classes that developers can use to style their HTML elements directly in the markup
+
+LOGIN PAGE - DONE!!!
+    first ask user to login always
+    redirects to home page
+
+
+#After login user will always have option to logout go to their home page
+LOGOUT - DONE!!!
+    On logout redirect to login page
+
+
+INDEX - HOME PAGE - Done!!!
+    personal posts - Your Tallies
+    join conversation button - Mark Tallies
+
+
+CONVERSATION PAGE - Practicly Done!
+    topic
+    people
+    comment button
+    write comment
+    add comment
+    
+
+ABOUT US / CONTACT PAGE 
+
+the contact page is going to be done last 
+
+
+/post folder is not used in this project
+
+blog
+    templates/blog
+        detail.html
+        explore.html
+        form.html
+        Home.html
+        new.html
+core
+    templates/core
+        base.html
+        login.html
+        SignUp.html

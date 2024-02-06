@@ -1,0 +1,27 @@
+<!-- Show the Contact html page -->
+
+<!-- Relies on base.html foundations and substitutes the block content -->
+
+{% extends 'core/base.html' %} <!--import the base.html code-->
+
+{% block title %}Contact{% endblock %} <!--Change the title of the page-->
+
+{% block content %} <!--PLACEHOLDER SUBSTITUTION FOR 'content' BLOCK-->
+<div class="mt-6 px-6 py-12 bg-gray-100 rounded-xl">
+    <h2 class="mb-12 text-2xl text-center">Contact: </h2>
+    <div class="w-1/2 my-6 mx-auto p-6 bg-gray-100 rounded-xl">
+
+        <h3 class="text-lg font-semibold mt-6 mb-2">Give your mum a call... she worries about you.</h3>
+    
+        <h3 class="text-lg font-semibold mt-6 mb-2">or Contact Tallie Associate:</h3>
+    
+        <ul>
+            <li class="list-none text-lg font-semibold mt-6 mb-2 ml-4">> Brian Perez via <a href="https://www.linkedin.com/in/tech-bp/" class="text-teal-500 hover:underline">LinkedIn</a></li>
+        </ul>
+        
+
+        <!-- Add more social media links here when needed-->
+    </ul>
+    </div>
+</div>
+{% endblock %}

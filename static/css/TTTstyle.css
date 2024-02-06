@@ -1,0 +1,134 @@
+*{ /*apply to all page*/
+    margin: 0;
+    padding: 0;
+    border: 0;
+    outline: none;
+    box-sizing: border-box;
+}
+.Instruct{
+    display: column;
+    color:rgb(172, 155, 207);
+    font-size: 50px;
+    justify-content: center;
+    margin: 25px 0px;
+}
+
+.button{
+    background-color: #0d456b;
+    color:#ac9bcf;
+    font-family: 'Courier New', Courier, monospace;
+    font-size: 30px;
+    cursor: pointer;
+    border: 2.5px solid white;
+    padding: 10px;
+    transition: 0.4s ease;
+}
+
+ button:hover{ /*change the hover feature */
+    color: #fff;
+    background: #06283D;
+}
+
+.fadeOut{
+    animation: 0.25s fadeOut forwards;
+    /* animation-delay: .5s; */
+}
+
+/*add animation fade-out*/
+@keyframes fadeOut{
+    to {
+        scale: 0;
+        opacity: 0;
+    }
+}
+
+.fadeIn{
+    animation: 0.9s fadeIn forwards;
+    /* animation-delay: .5s; */
+}
+
+/*add animation fade-out*/
+@keyframes fadeIn{
+    to {
+        scale: 1;
+        opacity: 1;
+    }
+}
+
+
+.text{
+    display:flex;
+}
+
+.slide{
+    animation: .9s Slide forwards;
+}
+
+@keyframes Slide {
+    to{
+        transform: translateY(60%);/*slide the info text down*/
+    }
+}
+
+.slideUp{
+    animation: .25s SlideUp forwards;
+}
+
+@keyframes SlideUp {
+    to{
+        transform: translateY(-5%);/*slide the info text up*/
+    }
+}
+
+body{ /*apply to body */
+    height: 90vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: rgb(6, 40, 61);
+}
+
+.board{ /*apply to container div inside body*/
+    width: 70vw;
+    height: 70vh;
+    background: #ac9bcf;
+    font-family: 'Roboto', sans-serif;
+    transition: 0.6s ease-out;
+    /* border: 2.5px solid white; */
+}
+
+.row-1, .row-2, .row-3{
+    display: flex;
+    /* width:auto; */
+    height:34%;
+    border-color: aliceblue;
+}
+
+.box
+{
+    display: flex;
+    border: 5px solid white;
+    position: relative;
+    width: 100%; /*takes up the entire width of the flex box div and divides it for the 3 slots*/
+    background-color: aqua;
+    justify-content: center;/*centers content horizontally*/
+    align-items: center;/*centers content vertically*/
+}
+
+.box:hover{
+    cursor: pointer;
+}
+
+.enlargedText {
+    font-weight: 700;
+    font-weight: bold;
+    font-size: 80px;
+}
+
+.Xclass {
+    color: rgb(6, 40, 61);
+}
+
+.Oclass {
+    color: rgb(172, 155, 207);
+}
