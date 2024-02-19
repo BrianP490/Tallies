@@ -25,19 +25,130 @@ body{ /*apply to body */
 #Navigation{
     width: 100%;
 }
+#Home_Profile_Image_Div{
+    text-align: center;
+}
+#Home_Pro_Image{
+    max-width: 300px;
+    max-height: 300px;
+    display: block; /* Ensures the image is treated as a block element */
+    margin: 0 auto; /* Centers the image horizontally */
+    border-radius: 20px;
+    border: 4px solid #14b8a6;
+}
+
+.Explore_Blog-Content{
+    overflow: hidden;
+    display: -webkit-box;
+    -webkit-line-clamp: 3; /* Number of lines to show */
+    -webkit-box-orient: vertical;   
+}
+.BLOG-POST {
+    padding: 24px; /* p-6 - Set padding to 24px (6 * 4px = 24px) */
+    display: flex; /* flex - Enable Flexbox layout */
+    flex-direction: column; /* flex-col - Arrange flex items in a column */
+    background-color: #caccd0; /* bg-gray-200 - Set background color to gray-200 */
+    border-radius: 20px; /* rounded-xl - Apply rounded corners */
+    margin-bottom: 6px;
+}
+
+.Description_Block{
+    border-top: 1px solid #14b8a6;
+    padding-top: 4px;
+    margin-top: 4px;
+}
 
 
-/* .Content{
-    width: 100%;
-} */
-/* footer{
-    width: 100%;
-} */
+input[type="checkbox"] {
+    /* Hide the default checkbox */
+    display: none;
+}
+label[for="profile_image-clear_id"] {
+    display: none;
+
+}
+
+.Current_User_Profile{
+    max-width: 300px;
+    max-height: 300px;
+    border-radius: 20px;
+    border: 4px solid #14b8a6;
+}
+
+#profileImagePreview {
+    max-width: 300px;
+    max-height: 300px;
+    border-radius: 20px;
+    border: 4px solid #14b8a6;
+}
+
+.FadeOut{
+    display:none
+}
 
 #LOGO {
     width: 45px; height: 45px; border-radius: 0.5rem; margin-right: 10px;
+
 }
 
+#Update_Profile_BTN{
+    background-color: #3fc3b5;
+}
+#Update_Profile_BTN:hover{
+    background-color: #14b8a6;
+}
+
+#Home_Delete_Profile_BTN{
+    background-color: rgb(254, 40, 40);
+}
+#Home_Delete_Profile_BTN:hover{
+    background-color: red;
+}
+
+
+.POSITIVE_BTN{
+    display: inline-block;
+    margin-top: 24px; /* Equivalent to mt-6 */
+    padding: 10px 24px; /* Equivalent to px-6 py-3 */
+    font-size: 18px; /* Equivalent to text-lg */
+    font-weight: 600; /* Equivalent to font-semibold */
+    background-color: #3fc3b5; /* Equivalent to bg-red-500 */
+    color: #fff; /* Equivalent to text-white */
+    border-radius: 20px; /* Equivalent to rounded-xl */
+    text-decoration: none; /* Remove underline */
+}
+
+.POSITIVE_BTN:hover {
+    background-color: #14b8a6; /* Change background color on hover */
+}    
+
+
+.CNL_BTN{   /*style cancel button for forms*/
+    padding: 10px 24px; /* px-6 py-3 */
+    font-size: 18px; /* text-lg */
+    font-weight: 600; /* font-semibold */
+    background-color: #4A5568; /* bg-gray-500 */
+    color: #fff; /* text-white */
+    border-radius: 20px; /* rounded-xl */
+    text-decoration: none; /* Remove underline */
+}
+
+.CNL_BTN:hover {
+    background-color: #2D3748; /* hover:bg-gray-700 */
+}
+
+#CancelCommentButton{
+    padding: 10px 24px; /* px-6 py-3 */
+    font-size: 18px; /* text-lg */
+    font-weight: 600; /* font-semibold */
+    background-color: #4A5568; /* bg-gray-500 */
+    color: #fff; /* text-white */
+    border-radius: 20px; /* rounded-xl */
+    text-decoration: none; /* Remove underline */
+}
+#CancelCommentButton:hover {
+    background-color: #2D3748; /* hover:bg-gray-700 */
+}
 /* Font size for width between 1px and 600px */
 @media (min-width: 1px) and (max-width: 600px) {
     #Navigation a,

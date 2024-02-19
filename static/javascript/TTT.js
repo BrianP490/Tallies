@@ -1,5 +1,6 @@
 //-------------GLOBAL VARIABLES-------------//
-const button = document.querySelector('.button');   //links the html button to a variable; used to initiate or replay the game
+const Play_Button = document.getElementById('Left_Button');   //links the html Play_Button to a variable; used to initiate or replay the game
+const Home_Button = document.getElementById('Right_Button'); //get the Home_Button 
 const text = document.querySelector('.text');   //links the html text div to a variable; used to display instructions
 const Spaces = ["","","","","","","","",""]; //initializes spaces array of the game board 
 let GameComplete = false;   // Variable that stores the current game completion state
@@ -31,8 +32,8 @@ function determineStartingPlayer(){
 function GameReset(){
     GameComplete = false;       // the game conditional loop token
 
-    button.classList.remove("fadeIn", "fadeOut");   //clear button animations
-
+    Play_Button.classList.remove("fadeIn", "fadeOut");   //clear Play_Button animations
+    Home_Button.classList.remove('ascendDown', 'ascend');
     text.classList.remove('slideUp', 'slide');  //clear instruction animations
 
     // player = "";
@@ -89,27 +90,28 @@ function updateSpaces(e){
 //Function: starts the TTT game
 function AddButton(){
 
-    //add an event listener to the on-screen button. On the botton click, the game starts
-    button.addEventListener('click', function()
+    //add an event listener to the on-screen Play_Button. On the botton click, the game starts
+    Play_Button.addEventListener('click', function()
     {
-        console.log(" button called");      //debug output to console
+        console.log(" Play_Button called");      //debug output to console
 
-        //if the button has the class fadein the game was restarted by button-press
-        if (button.classList.contains('fadeIn')) {
+        //if the Play_Button has the class fadein the game was restarted by Play_Button-press
+        if (Play_Button.classList.contains('fadeIn')) {
             GameReset();    //call reset game function
           }
 
-        button.classList.add('fadeOut');    // add animation to the button to fade out of the screen
+        Play_Button.classList.add('fadeOut');    // add animation to the Play_Button to fade out of the screen
         text.classList.add('slide');    // add animation to the text prompt to slide down vertically
+        Home_Button.classList.add('ascend');
 
         determineStartingPlayer();  //determine the starting player
 
         playGame();
 
         try {
-            button.removeEventListener('click', function(){});
+            Play_Button.removeEventListener('click', function(){});
         } catch (error) {
-            console.log("button event listener removal error");
+            console.log("Play_Button event listener removal error");
         }
     });
 }
@@ -129,7 +131,7 @@ function playGame(){
 
 //Function: updates the game space and determines whether or not the game is won ; ADD up the Win conditions and GO to the next state
 function addGo(e){
-    //remove clicking event from selected button
+    //remove clicking event from selected Play_Button
     try{boxes[e.target.id].removeEventListener('click', addGo);}
     catch{console.log("addGo remove event Listener didn't work")}
  
@@ -156,13 +158,15 @@ function addGo(e){
     if(GameComplete){   //Final Step of the Finished Game
         //slide up text
         text.classList.add('slideUp');
+        Home_Button.classList.add('ascendDown');
+
         
-        button.classList.add('fadeIn');     //  make the button reappear
+        Play_Button.classList.add('fadeIn');     //  make the Play_Button reappear
         setTimeout(function() {
             console.log("BYE BYE");         //debug console msg
             // AddButton();
             }, 1000);
-        return;     //quits the game, but gives players the reset button option
+        return;     //quits the game, but gives players the reset Play_Button option
 
     }
     //continue with the game by updating parameters

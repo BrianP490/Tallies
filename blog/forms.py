@@ -1,5 +1,4 @@
 from django import forms 
-
 from .models import Blog, BlogComment
 
 
@@ -8,19 +7,31 @@ INPUT_CLASSES = 'w-full py-4 px-6 rounded-xl border'    # DECLARE the style for 
 
 # CREATE a NewBlogForm that includes the Blog's Meta data such as category, name, description, price, image
 class NewBlogForm(forms.ModelForm):
+    new_category = forms.CharField(label='Or Create New Category', required=False, max_length=30, widget=forms.TextInput(attrs={
+        'class': INPUT_CLASSES,
+        'placeholder': 'Optional'
+    }))
+    
+    
     class Meta:         # class for the Blog's Meta Data
         model = Blog
-        fields = ('category', 'name', 'content',)
+        fields = ('category', 'new_category', 'name', 'content',)
 
+        labels = {  # Define labels for the fields
+            'category': 'Select a fitting Category',
+            'name': 'Title',  # Specify the label for the 'name' field as 'Title'
+        }
         widgets = { # STYLE THE FIELDS
             'category': forms.Select(attrs={
             'class': INPUT_CLASSES
             }),
             'name': forms.TextInput(attrs={
-            'class': INPUT_CLASSES
+            'class': INPUT_CLASSES,
+            'placeholder': 'Blog Title'
             }),
             'content': forms.Textarea(attrs={
-            'class': INPUT_CLASSES
+            'class': INPUT_CLASSES,
+            'placeholder': 'Enter content'
             }),
         }
 
@@ -54,4 +65,4 @@ class CommentForm(forms.ModelForm):
             'class': INPUT_CLASSES
             }),
         }
-    # comment = forms.CharField(widget=forms.Textarea)
+

@@ -23,7 +23,11 @@
             
             <div class="Instruct">
                 <p class="text">Welcome</p>
-                <button class="button">Click Me To Start Game</button>
+                <div id="Button_Div" class="flex" >
+                    <button id="Left_Button"class="button">Click Me To Start Game</button>
+                    <button id="Right_Button"class="button my-4"><a href="{% url 'blog:home'%}">Return Home</a></button>
+
+                </div>
             </div>
 
             <div class="board"> <!--Tic Tac Toe Game Board design-->

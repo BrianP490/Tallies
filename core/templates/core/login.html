@@ -5,6 +5,11 @@
 {% extends 'core/base.html' %} <!--import the base.html code-->
 {% block title %}Log in{% endblock %}<!--Change the title of the page-->
 
+
+{% block Xtra_Button_SignIN %}<!--remove the login button from the login page-->
+    <!-- leave empty -->
+{% endblock %}  
+
 {% block content %} <!--PLACEHOLDER SUBSTITUTION FOR 'content' BLOCK-->
 <div class=" my-6 mx-auto bg-gray-100 rounded-xl">
     <h1 class="mb-6 text-3xl">Log in</h1>
@@ -42,7 +47,7 @@
 
         
         
-        <a href="{% url 'core:SignUp' %}" class="py-1 px-2 my-2 text-lg bg-teal-500 hover:bg-teal-700 rounded-xl text-white">
+        <a href="{% url 'core:Register' %}" class="py-1 px-2 my-2 text-lg bg-teal-500 hover:bg-teal-700 rounded-xl text-white">
             <button>SignUp</button>
         </a><!-- Using the core.urls.py and within the urlpatterns list, make a call to the URL pattern named 'SignUp'. The specified views function will then be forced to run -->
     </div>

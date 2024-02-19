@@ -1,4 +1,5 @@
 from django.contrib import admin
+from django.contrib.auth.models import Group
 from .models import Blog, Category, BlogComment
 
 
@@ -7,3 +8,4 @@ from .models import Blog, Category, BlogComment
 admin.site.register(Category)
 admin.site.register(Blog)
 admin.site.register(BlogComment)
+admin.site.unregister(Group)

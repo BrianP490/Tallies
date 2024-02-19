@@ -13,6 +13,19 @@
     margin: 25px 0px;
 }
 
+#Button_Div{
+    display: flex;
+    justify-content: space-between;
+    /* align-items: center; */
+}
+
+#LeftPButton {
+    margin-right: auto; /* Pushes the button to the left */
+  }
+  
+#Right_button {
+    margin-top: auto; /* Pushes the button to the right */
+  }
 .button{
     background-color: #0d456b;
     color:#ac9bcf;
@@ -22,6 +35,14 @@
     border: 2.5px solid white;
     padding: 10px;
     transition: 0.4s ease;
+}
+
+.button a{
+    text-decoration: none;
+    color: #cf9b9b;
+}
+.button a:visited {
+    color: inherit; /* Inherit color from the parent element */
 }
 
  button:hover{ /*change the hover feature */
@@ -66,7 +87,7 @@
 
 @keyframes Slide {
     to{
-        transform: translateY(60%);/*slide the info text down*/
+        transform: translateY(60%);/*slide the info text down the screen (Top left corner is (0,0)  )*/
     }
 }
 
@@ -76,7 +97,26 @@
 
 @keyframes SlideUp {
     to{
-        transform: translateY(-5%);/*slide the info text up*/
+        transform: translateY(-5%);/*slide the info text up the screen*/
+    }
+}
+.ascend{
+    animation: .9s Ascend forwards;
+}
+
+@keyframes Ascend {
+    to{
+        transform: translateY(-140%);/*slide the button up the screen*/
+    }
+}
+
+.ascendDown{
+    animation: .25s AscendDown forwards;
+}
+
+@keyframes AscendDown {
+    to{
+        transform: translateY(0%);/*slide the info text up*/
     }
 }
 

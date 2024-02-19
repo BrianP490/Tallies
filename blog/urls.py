@@ -18,7 +18,6 @@ Including another URLconf
 # A URL mapper is used to redirect HTTP requests to the appropriate view based on the request URL. The URL mapper can also match particular patterns of strings or digits that appear in a URL and pass these to a view function as data. 
 
 from django.urls import path
-
 from . import views
 
 app_name = 'blog'                               # IMPORTANT!!! USED to include this file within puddle.settings via app_name
@@ -27,9 +26,7 @@ app_name = 'blog'                               # IMPORTANT!!! USED to include t
 urlpatterns = [
     path('home/', views.blogs, name='home'),    # This line maps the URL '' to the 'blogs' view function in the ./views.py module. The name 'blogs' can be used to reference this URL in the HTML code (i.e. <form method="get" action="{% url 'item:blogs' %}">)
     
-    path('new/', views.new, name='new'),    # This line maps the URL 'new/' to the 'new' view function in the ./views.py module. The name 'new' can be used to reference this URL in the HTML code.
-
-    # path('', views.blog_post, name='Comment'),    # This line maps the URL 'new/' to the 'new' view function in the ./views.py module. The name 'new' can be used to reference this URL in the HTML code.
+    path('new/', views.new, name='new'),    # NEW BLOG VIEW This line maps the URL 'new/' to the 'new' view function in the ./views.py module. The name 'new' can be used to reference this URL in the HTML code.
 
     path('<int:pk>/', views.detail, name='detail'), #This line captures an integer parameter from the URL and calls the detail function in the ./views.py module. The name 'detail' can be used to reference this URL in the HTML code. 
 
@@ -38,4 +35,6 @@ urlpatterns = [
     path('<int:pk>/edit/', views.edit, name='edit'),  # Captures an integer parameter and maps the URL to the edit function in the views module. The name 'edit' can be used to reference this URL in the HTML code.
 
     path('explore/', views.explore, name='explore'),  # Matches URL to the explore function in the views module. The name 'explore' can be used to reference this URL in the HTML code.
+
+    path('ViewProfile/<int:pk>/', views.ViewProfile, name='ViewProfile'),     # This line maps the URL 'ViewProfile/<int:pk>/' to the 'ViewProfile' view function in the ./views.py module. The name 'ViewProfile' can be used to reference this URL in the HTML code. Used to view another User's Profile Page and Score
 ]

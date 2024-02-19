@@ -130,9 +130,9 @@ USE_TZ = True
 
 
 # These setting defines the base URL for serving media files uploaded by users. For example, if MEDIA_URL is set to 'media/', then USER-UPLOADED files will be served under URLs like http://example.com/media/.
-MEDIA_URL = 'media/'    # For user uploaded images
+MEDIA_URL = '/media/'    # For user uploaded images
 
-MEDIA_ROOT = BASE_DIR / 'media'
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media') #where new media files are uploaded to
 
 
 # Static files (CSS, JavaScript, Images)

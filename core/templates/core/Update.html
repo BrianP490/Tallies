@@ -1,0 +1,73 @@
+<!-- UPDATE USER/PROFILE PAGE -->
+
+<!-- Relies on base.html foundations and substitutes the content -->
+
+{% extends 'core/base.html' %} <!--import the base.html code-->
+{% block title %}Update User{% endblock %}<!--Change the title of the page-->
+
+{% block content %} <!--PLACEHOLDER SUBSTITUTION FOR 'content' BLOCK-->
+<div class=" my-6 mx-auto bg-gray-100 rounded-xl">
+    <h1 class="mb-6 text-3xl">Update User</h1>
+
+
+    <img id='Home_Pro_Image' src="{{user.profile.profile_image.url}}">
+
+
+    <form method="post" action="." enctype="multipart/form-data">
+        {% csrf_token %}    <!-- This is a Django template tag that outputs a hidden input field containing a Cross-Site Request Forgery (CSRF) token. CSRF tokens are used to protect against CSRF attacks by ensuring that the form is submitted by the same site that rendered it.-->
+
+        {{ u_form.as_p}}
+        {{ p_form.as_p}}
+        
+
+        <img id="profileImagePreview" class="FadeOut" src="#" alt="Profile Picture Preview"><!--hidden if a file is not selected-->
+
+
+        {% if u_form.errors or u_form.non_field_errors %} <!--Check for errors-->
+            <div class="mb-3 p-6 bg-red-100 rounded-xl">
+                {% for field in u_form %}
+                    {{ field.errors }} <!--Display any field errors-->
+                {% endfor %}
+
+                {{form.non_field_errors}} <!--Display any other errors-->
+            </div>
+        {% endif %}
+        <div class='mt-2'>
+
+            <button class="px-6 py-3 text-lg font-semibold bg-teal-500 rounded-xl text-white hover:bg-teal-700">SAVE</button>
+
+            <a href="{% url 'blog:home' %}" class="px-6 py-3 text-lg font-semibold bg-gray-500 rounded-xl text-white hover:bg-gray-700">Cancel</a>
+        </div>
+
+        
+    </form>
+
+</div>
+{% endblock %}
+
+
+<!-- add custom script for this page to display the uploaded profile image -->
+{% block Script_Content %} 
+<script> 
+    const profileImageInput = document.getElementById('id_profile_image');  // select the file input box
+    const profileImagePreview = document.getElementById('profileImagePreview'); //select the preview image element
+
+
+    //add an event listener to the uploard image input box
+    profileImageInput.addEventListener('change', function() {
+        const file = this.files[0];  //select the first image that was selected
+
+        if (file) {  //check if there is a valid file
+            const reader = new FileReader();    //initiate a new reader object
+
+            reader.addEventListener('load', function() {        //apply an event listener to the reader
+                profileImagePreview.classList.toggle('FadeOut');        //display the image block when activated
+                profileImagePreview.src = this.result;      
+            });
+
+            reader.readAsDataURL(file);     //fill in the source url of the image
+        }
+    });
+
+</script>
+{% endblock %}

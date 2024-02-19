@@ -1,0 +1,67 @@
+<!-- Show the Unregister html page -->
+
+<!-- Relies on base.html foundations and substitutes the block content -->
+
+{% extends 'core/base.html' %} <!--import the base.html code-->
+
+{% block title %}Unregister{% endblock %} <!--Change the title of the page-->
+
+{% block Extra_Styling %}<!--BLOCK PLACEHOLDER named 'Extra_Styling' -- for more css/other formatting for this page-->
+<style>
+    /* Style the delete user input button from the form */
+    input[type="submit"] {
+        background-color: orangered;
+        color: white;
+        border: none;
+        padding: 10px 20px;
+        font-size: 18px; /* text-lg */
+        font-weight: 600; /* font-semibold */
+        border-radius: 20px;
+        cursor: pointer; /* Change cursor to pointer */
+    }
+
+    /* Change cursor to pointer when hovering over the input field */
+    input[type="submit"]:hover {
+        cursor: pointer;
+        background-color: red;
+    }
+
+
+
+    .CNL_BTN:hover {
+    background-color: #2D3748; /* hover:bg-gray-700 */
+    }
+
+
+    .Unregister-button-container {
+        display: flex;
+        justify-content: center; /* Center the flex items horizontally */
+    }
+
+    .Unregister-centered-button {
+        margin: 0 5px; /* Add some margin between the buttons */
+    }
+</style>                
+                
+{% endblock %}
+
+
+{% block content %} <!--PLACEHOLDER SUBSTITUTION FOR 'content' BLOCK-->
+<div class="py-6">
+    <h1 class="text-center text-lg font-semibold">Delete Confirmation</h1>
+    <p class="text-center"> Are you sure you want to unregister your account???</p>  
+</div>
+
+      
+
+<div class="Unregister-button-container" >
+    <form method="post" >
+        {% csrf_token %}
+        <input type="submit" value="Tally Out For Good" class="Unregister-centered-button">
+    </form>
+    
+    <a href="{% url 'blog:home' %}" class="CNL_BTN Unregister-centered-button">Cancel</a>
+    
+</div>
+
+{% endblock %}

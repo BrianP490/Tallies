@@ -1,40 +1,75 @@
+python manage.py makemigrations >then> python manage.py migrate
+python manage.py collectstatic 
+python manage.py runserver
 
 
 Notes on the use of Tailwind css:
-    Used to provide sytles to classes and HTML elements
+    Used to provide styles to classes and HTML elements
     Tailwind CSS for its pragmatic approach to styling, which prioritizes efficiency, flexibility, and maintainability in web development projects.
     Tailwind CSS follows a utility-first approach, providing a set of low-level utility classes that developers can use to style their HTML elements directly in the markup
 
+
+
+
 LOGIN PAGE - DONE!!!
     first ask user to login always
-    redirects to home page
+    redirects to home page once correct user credentials entered
+    create a user if they are new > DIRECTED TO SIGNUP PAGE
+
+
+SIGN UP / Create User - DONE!!!
+    Ask for email, username, pswd
+    Ask for Profile Picture
+    initialize user tally score 
+
+
 
 
 #After login user will always have option to logout go to their home page
 LOGOUT - DONE!!!
-    On logout redirect to login page
+    On logout > redirect to login page
 
 
-INDEX - HOME PAGE - Done!!!
-    personal posts - Your Tallies
-    join conversation button - Mark Tallies
+INDEX - HOME PAGE - DONE!!!
+    personal posts (Your Tallies) 
+    explore button via logo click 
+    play snake mini-game 
+    Display User profile picture
+    Display User Tally Score
+    Edit user/profile page
+    Delete a User
+
+EXPLORE PAGE - DONE!!! 
+    limit number of blogs per page (DJANGO PAGINATION)
+    next page option
 
 
-CONVERSATION PAGE - Practicly Done!
+
+
+
+BLOG DETAIL PAGE - DONE!!!
     topic
     people
     comment button
     write comment
-    add comment
-    
 
-ABOUT US / CONTACT PAGE 
+    add comment (SHOULD INCREASE Blog Owner's score and Commenter's POINT SCORE)
+    Delete A Blog 
 
-the contact page is going to be done last 
+NEW BLOG PAGE - DONE
+    add new category
 
 
-/post folder is not used in this project
 
+ABOUT US PAGE - DONE!!!
+CONTACT PAGE - DONE!!! 
+TERMS PAGE - DONE!!!
+PRIVACY PAGE - DONE!!!
+
+
+
+ 
+TEMPLATES ===
 blog
     templates/blog
         detail.html
@@ -47,3 +82,18 @@ core
         base.html
         login.html
         SignUp.html
+
+
+MODELS ===
+User:
+    username
+    first name
+    last name
+    email
+    Profile
+
+Profile:
+    User
+    age
+    profile image
+    score

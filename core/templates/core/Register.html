@@ -1,0 +1,80 @@
+<!-- Show the Register html page -->
+
+<!-- Relies on base.html foundations and substitutes the block content -->
+
+{% extends 'core/base.html' %} <!--import the base.html code-->
+
+{% block title %}Register{% endblock %} <!--Change the title of the page-->
+
+{% block content %} <!--PLACEHOLDER SUBSTITUTION FOR 'content' BLOCK-->
+<div class="w-1/2 my-6 mx-auto p-6 bg-gray-100 rounded-xl">
+    <h1 class="mb-6 text-3xl">Sign Up</h1>
+
+    <form method="post" action="." enctype="multipart/form-data"> <!--CREATE A FORM TO SUBMIT allowing user profile pics-->
+        {% csrf_token %}    <!-- used for online security -->
+
+        <div class="mb-3">
+            <label for="" class="inline-block mb-2">Username</label>
+            {{form.username}} <!--entry field for Username-->
+        </div>
+        <div class="mb-3">
+            <label for="" class="inline-block mb-2">First Name</label>
+            {{form.first_name}} <!--entry field for Username-->
+        </div>
+        <div class="mb-3">
+            <label for="" class="inline-block mb-2">Email</label>
+            {{form.email}} <!--entry field for Email-->
+        </div>
+        <div class="mb-3">
+            <label for="" class="inline-block mb-2">Password</label>
+            {{form.password1}} <!--entry field for Password1-->
+        </div>
+        <div class="mb-3">
+            <label for="" class="inline-block mb-2">Repeat Password</label>
+            {{form.password2}} <!--entry field for Password2-->
+        </div>
+
+        <!--entry field for Age-->
+
+        <div class="mb-3">
+            <label for="" class="inline-block mb-2">{{ p_form.age.label_tag }}</label>
+            {{p_form.age}}
+            <!-- <small>{{ p_form.age.help_text }}</small>  -->
+        </div>
+
+        <!--entry field for Profile Picture-->
+        <div class="mb-3">
+            <label for="" class="inline-block mb-2">Profile Picture:</label>
+            {{  p_form.profile_image }} <!--Render the file picker button-->
+
+            <!-- show any Profile Picture error:  -->
+            {{ p_form.profile_picture.errors }}
+            <!-- {{p_form.profile_picture}} -->
+        </div>
+
+        {% if form.errors or form.non_field_errors %} <!-- most errors will be handled by the AuthenticationForm class -->
+            Some User Form Errors Have Appeared
+            
+            <div class="mb-3 p-6 bg-red-100 rounded-xl">
+                {% for field in form %} <!--Loop through all detected errors in the form entry fields-->
+                    {{ field.errors }} <!--load in the error message to the screen-->
+                {% endfor %}
+                {{form.non_field_errors}} <!-- load in any non-field errors-->
+            </div>
+        {% endif %}
+
+        {% if p_form.errors or p_form.non_field_errors %}   <!--Show all Profile Form errors in the screen-->
+            Some Profile Form Errors Have Appeared  <!--message to the user-->
+            <div class="mb-3 p-6 bg-red-100 rounded-xl">
+                {% for field in p_form %} <!--Loop through all detected errors in the form entry fields-->
+                    {{ field.errors }} <!--load in the error message to the screen-->
+                {% endfor %}
+                {{p_form.non_field_errors}} <!-- load in any non-field errors-->
+            </div>
+        {% endif %}
+        <button class="py-4 px-8 text-lg bg-teal-500 hover:bg-teal-700 rounded-xl text-white">Submit</button> <!--Submit button that triggers form submittion action-->
+    </form>
+
+
+</div>
+{% endblock %}
